@@ -1,3 +1,20 @@
+## How to compile successfully
+
+### error 1
+error: ‘CV_BGR2GRAY’ was not declared in this scope
+  105 |   cv::cvtColor(imgRGB1, imgGray1, CV_BGR2GRAY);
+
+* sed -i 's/CV_BGR2GRAY/cv::COLOR_BGR2GRAY/g' `grep CV_BGR2GRAY -rl ./`
+
+### error 2
+error: ‘<anonymous>.ceres::internal::SchurEliminator<2, 2, 3>::Chunk::start’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+  267 |   struct Chunk {
+      |          ^~~~~
+cc1plus: all warnings being treated as errors
+
+* You should remove all `-Werror` in the all CMakeLists.txt of your workspace (build, devel, src)
+
+
 README                        {#mainpage}
 ======
 

@@ -475,6 +475,27 @@ void Publisher::publishOdometry()
   if ((_t - lastOdometryTime_).toSec() < 1.0 / parameters_.publishing.publishRate)
     return;  // control the publish rate
   pubObometry_.publish(odometryMsg_);
+
+  static std::string traj_output_path = "/home/lilabws001/exam_ws/okvis/src/okvis_ros/output/result.txt";
+
+  static bool tmp_flag = false;
+  if (tmp_flag == false)
+  {
+    std::ofstream traj_fout(traj_output_path, std::ios::out);
+    traj_fout << "#timestamp(s) tx ty tz qx qy qz qw" << std::endl;
+    traj_fout.close();
+    tmp_flag = true;
+  }
+  else
+  {
+    static std::ofstream traj_fout(traj_output_path, std::ios::app);
+    traj_fout.setf(std::ios::fixed, std::ios::floatfield);
+    traj_fout << std::setprecision(6) << odometryMsg_.header.stamp.toSec()  << " " << std::setprecision(8) 
+      << odometryMsg_.pose.pose.position.x << " " << odometryMsg_.pose.pose.position.y << " " << odometryMsg_.pose.pose.position.z << " "
+      << odometryMsg_.pose.pose.orientation.x << " " << odometryMsg_.pose.pose.orientation.y << " " << odometryMsg_.pose.pose.orientation.z << " " << odometryMsg_.pose.pose.orientation.w << std::endl;
+  }
+
+
   if(!meshMsg_.mesh_resource.empty())
     pubMesh_.publish(meshMsg_);  //publish stamped mesh
   lastOdometryTime_ = _t;  // remember

@@ -30,9 +30,6 @@
 - **play rosbag**
   - `rosbag play MH_01_easy.bag`
 
-If you find this work useful or interesting, please kindly give us a star :star:, thanks!
-
-
 ## How to compile successfully
 
 ### error 1
@@ -48,6 +45,8 @@ error: ‘<anonymous>.ceres::internal::SchurEliminator<2, 2, 3>::Chunk::start’
 cc1plus: all warnings being treated as errors
 
 * You should remove all `-Werror` in the all CMakeLists.txt of your workspace (build, devel, src)
+
+If you find this work useful or interesting, please kindly give us a star :star:, thanks!
 
 
 README                        {#mainpage}

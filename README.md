@@ -1,3 +1,38 @@
+## ROS Noetic version of okvis_ros.
+
+### Prerequisites
+- **System**
+  - Ubuntu 20.04
+  - ROS Noetic
+- **Libraries**
+  - OpenCV 4.2.0 (default version of ROS Noetic)
+  - [Ceres Solver-1.14.0](http://ceres-solver.org/installation.html)
+
+### Build
+- **download the source package**
+  - `mkdir ~/catkin_ws/src && cd ~/catkin_ws/src`
+  - `git clone --recurse-submodules https://github.com/xygxgn/okvis_ros.git`
+  - `cd okvis_ros`
+- **build**
+  - *do NOT forget source the ros workspace*
+  - `source /opt/ros/noetic/setup.bash`
+  - `cd ~/catkin_ws/src`
+  - `catkin_make`
+
+- **Notes**
+  - ***The version of the OpenCV must be consistent with the version of OpenCV used by cv-bridge***
+
+### Run
+- **download the source package**
+  - `cd ~/catkin_ws`
+  - `source devel/setup.bash`
+  - `roslaunch okvis_ros okvis_node.launch`
+- **play rosbag**
+  - `rosbag play MH_01_easy.bag`
+
+If you find this work useful or interesting, please kindly give us a star :star:, thanks!
+
+
 ## How to compile successfully
 
 ### error 1

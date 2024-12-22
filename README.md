@@ -16,7 +16,7 @@
 - **build**
   - *do NOT forget source the ros workspace*
   - `source /opt/ros/noetic/setup.bash`
-  - `cd ~/catkin_ws/src`
+  - `cd ~/catkin_ws/`
   - `catkin_make`
 
 - **Notes**
